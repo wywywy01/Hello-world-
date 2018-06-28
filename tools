@@ -1,0 +1,12 @@
+##读取某个path下面所有文件名，并写入txt文件
+
+def get_file_path_and_anno_path(src_data_dir,des_data_dir):
+    #read file name  only, write txt file
+    with open(des_data_dir+r"\file_name_AFLW2000.txt","w") as f:
+        for root, dirs, files in os.walk(src_data_dir):
+            temp_file = [x.split(".")[0] for x in files]
+            temp_file = list(set(temp_file))
+
+            for file_name in temp_file:
+                f.write(file_name + "\n")
+            break
